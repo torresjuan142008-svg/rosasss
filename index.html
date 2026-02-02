@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Tulipanes Rosas</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(#fde0ef, #f8bbd0);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+
+  /* Imagen de tulipanes creciendo */
+  .flower {
+    width: 320px;
+    animation: grow 3s ease-out forwards;
+    transform-origin: bottom center;
+    transform: scale(0);
+  }
+
+  @keyframes grow {
+    to { transform: scale(1); }
+  }
+
+  /* Pétalos cayendo */
+  .falling-petal {
+    position: absolute;
+    top: -50px;
+    width: 22px;
+    height: 32px;
+    background: radial-gradient(circle at top, #ffd1e8, #f06292);
+    border-radius: 50% 50% 60% 60%;
+    opacity: 0.8;
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(110vh) rotate(360deg); }
+  }
+
+  button {
+    position: fixed;
+    bottom: 20px;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 25px;
+    background: #ec407a;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Tulipanes con animación de crecimiento -->
+<img class="flower"
+     src="https://media.istockphoto.com/id/1478889850/es/vector/hermosa-pintura-de-flores-de-tulip%C3%A1n-rosa.jpg?s=1024x1024&w=is&k=20&c=24A-zkjCAZy9zm6_mhShGvEXV52JQtCjxY3g7ZDhFYg="
+     alt="Tulipanes rosas">
+
+<button onclick="playMusic()">▶ Reproducir música</button>
+
+<script>
+  // Crear pétalos cayendo
+  for (let i = 0; i < 25; i++) {
+    const petal = document.createElement('div');
+    petal.className = 'falling-petal';
+    petal.style.left = Math.random() * 100 + 'vw';
+    petal.style.animationDuration = 5 + Math.random() * 6 + 's';
+    petal.style.animationDelay = Math.random() * 5 + 's';
+    document.body.appendChild(petal);
+  }
+
+  // Música (YouTube con interacción)
+  function playMusic() {
+    window.open('https://www.youtube.com/watch?v=ZhIsAZO5gl0', '_blank');
+  }
+</script>
+
+</body>
+</html>
